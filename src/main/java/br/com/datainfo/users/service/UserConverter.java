@@ -3,14 +3,19 @@ package br.com.datainfo.users.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.datainfo.functions.repository.UserFunctionRepository;
 import br.com.datainfo.users.dto.UserGetDto;
 import br.com.datainfo.users.dto.UserPostDto;
 import br.com.datainfo.users.repository.User;
 
 @Component
 public class UserConverter {
+	
+	@Autowired
+	private UserFunctionRepository functionRepository;
 	
 	public User postToEntity(UserPostDto dto) {
 		User user = new User();
@@ -20,7 +25,7 @@ public class UserConverter {
 		user.setPhone(dto.getPhone());
 		user.setProfile(dto.getProfile());
 		user.setSituation(dto.getSituation() ? "A" : "I");
-		user.setCode(dto.getCode());
+		user.setFunction(functionRepository.findByCode(dto.getCode()));
 		return user;
 	}
 	
@@ -32,6 +37,7 @@ public class UserConverter {
 		dto.setPhone(user.getPhone());
 		dto.setProfile(user.getProfile());
 		dto.setSituation(user.getSituation().equals("A") ? true : false);
+		dto.setCode(user.getFunction().getCode());
 		return dto;
 	}
 	

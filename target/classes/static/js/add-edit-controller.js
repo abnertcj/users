@@ -17,6 +17,7 @@ app.controller("AddEditController", function($scope, $stateParams, AjaxService, 
 		if (self.id != undefined) {
 			AjaxService.httpGet('/api/users/' + self.id, self.getSuccessCallback, self.getFailureCallback);
 		}
+		AjaxService.httpGet('/api/functions', self.getFunctionsSuccessCallback, self.getFailureCallback);
 	}
 
 	self.saveUser = function() {
@@ -40,14 +41,10 @@ app.controller("AddEditController", function($scope, $stateParams, AjaxService, 
 	
 	self.getSuccessCallback = function(response) {
 		self.user = angular.copy(response.data);
-//		self.user = {
-//			email: '',
-//			name: '',
-//			cpf: '',
-//			phone: '',
-//			functionName: '',
-//			profile: ''
-//		};
+	}
+	
+	self.getFunctionsSuccessCallback = function(response) {
+		self.functions = angular.copy(response.data);
 	}
 	
 	self.getFailureCallback = function() {

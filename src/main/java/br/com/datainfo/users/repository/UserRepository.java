@@ -11,7 +11,4 @@ public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificat
 	@Query("from User where cpf = ?1")
 	public User findByCpf(String cpf);
 
-	@Query("delete from User u where u.cpf = ?1")
-	public void deleteByCpf(String cpf);
-
 }

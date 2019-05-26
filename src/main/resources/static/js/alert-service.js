@@ -6,14 +6,16 @@ app.factory("AlertService", function() {
     service.showSuccess = function(msg) {
     	$("#message-box").removeClass('alert-danger');
     	$("#message-box").addClass('alert-success');
-    	$("#message-box").append('<strong>' + msg + '</strong>');
+    	$(".alert-strong").remove();
+    	$("#message-box").append('<strong class="alert-strong">' + msg + '</strong>');
     	$("#message-box").show();
     };
 
     service.showError = function(msg) {
     	$("#message-box").removeClass('alert-success');
     	$("#message-box").addClass('alert-danger');
-    	$("#message-box").append('<strong>' + msg + '</strong>');
+    	$(".alert-strong").remove();
+    	$("#message-box").append('<strong class="alert-strong">' + msg + '</strong>');
     	$("#message-box").show();
     };
 

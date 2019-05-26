@@ -1,4 +1,4 @@
-package br.com.datainfo.users.repository;
+package br.com.datainfo.functions.repository;
 
 import java.io.Serializable;
 
@@ -15,7 +15,7 @@ public class UserFunction implements Serializable {
 	
 	@Id
 	@Column(name = "co_funcao")
-	private Integer code; // co_funcao serial NOT NULL, -- Código único da funcao do usuário externo
+	private Integer code; 
 	
 	@Column(name = "no_funcao")
 	private String name; // no_funcao varchar(50) NOT NULL -- nome da funcao do usuário externo
@@ -31,7 +31,7 @@ public class UserFunction implements Serializable {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}

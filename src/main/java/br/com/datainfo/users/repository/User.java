@@ -4,8 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import br.com.datainfo.functions.repository.UserFunction;
 
 @Entity
 @Table(name = "usuario_externo")
@@ -29,8 +34,9 @@ public class User implements Serializable {
 	@Column(name = "ic_perfil_acesso")
 	private Long profile;//	ic_perfil_acesso smallint NOT NULL, -- Perfil do usuário: 0-Aluno, 1-Gestor Municipal, 2-Gestor Estadual, 3-Gestor Nacional
 	
-	@Column(name = "co_funcao")
-	private Integer code;//	co_funcao smallint NOT NULL,-- Código único da funcao do usuário externo
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "co_funcao")
+	private UserFunction function;//	co_funcao smallint NOT NULL,-- Código único da funcao do usuário externo
 	
 	@Column(name = "nu_telefone")
 	private String phone;//	nu_telefone varchar(11)-- número do telefone
@@ -75,12 +81,12 @@ public class User implements Serializable {
 		this.profile = profile;
 	}
 
-	public Integer getCode() {
-		return code;
+	public UserFunction getFunction() {
+		return function;
 	}
 
-	public void setCode(Integer code) {
-		this.code = code;
+	public void setFunction(UserFunction function) {
+		this.function = function;
 	}
 
 	public String getPhone() {
@@ -95,9 +101,9 @@ public class User implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((function == null) ? 0 : function.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((profile == null) ? 0 : profile.hashCode());
@@ -114,11 +120,6 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
-			return false;
 		if (cpf == null) {
 			if (other.cpf != null)
 				return false;
@@ -128,6 +129,11 @@ public class User implements Serializable {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (function == null) {
+			if (other.function != null)
+				return false;
+		} else if (!function.equals(other.function))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -151,5 +157,5 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

@@ -34,11 +34,8 @@
 				</div>
 				<div class="col-md-3">
 					<label>Função:</label>
-					<select name="select-profile" class="form-control" ng-model="ctrl.user.functionName">
-						<option value="0">Aluno</option>
-						<option value="1">Gestor Municipal</option>
-						<option value="2">Gestor Estadual</option>
-						<option value="3">Gestor Nacional</option>
+					<select name="select-profile" class="form-control" ng-model="ctrl.user.code">
+						<option ng-repeat="func in ctrl.functions" value="{{func.code}}">{{func.name}}</option>
 					</select>
 				</div>
 				<div class="col-md-3">

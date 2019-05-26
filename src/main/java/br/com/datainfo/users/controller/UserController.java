@@ -59,7 +59,7 @@ public class UserController {
     public @ResponseBody ResponseEntity<Integer> save(@RequestBody UserPostDto dto) {
         User user = this.converter.postToEntity(dto);
     	User savedUser = this.repository.save(user);
-        return new ResponseEntity<Integer>(savedUser.getCode(), HttpStatus.OK);
+        return new ResponseEntity<Integer>(savedUser.getFunction().getCode(), HttpStatus.OK);
     }
     
     /*
@@ -79,14 +79,14 @@ public class UserController {
     }
     
     @RequestMapping(value = "/users/situation", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<User> updateSituation(@RequestBody UserPostDto dto) {
+    public @ResponseBody ResponseEntity<Boolean> updateSituation(@RequestBody UserPostDto dto) {
     	User savedUser = this.repository.findByCpf(dto.getCpf());
     	if (savedUser != null) {
 	        User user = this.converter.postToEntity(dto);
 	    	User updatedUser = this.repository.saveAndFlush(user);
-	        return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+	        return new ResponseEntity<Boolean>(dto.getSituation(), HttpStatus.OK);
     	} else {
-    		return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+    		return new ResponseEntity<Boolean>(HttpStatus.BAD_REQUEST);
     	}
     }
     

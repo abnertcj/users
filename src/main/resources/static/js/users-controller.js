@@ -50,12 +50,17 @@ app.controller("UsersController", function($scope, $state, AjaxService, AlertSer
 		
 	}
 	
-	self.updateSuccessCallback = function() {
-		AlertService.showSuccess("Usuário habilitado com sucesso!");
+	self.updateSuccessCallback = function(response) {
+		var isEnabled = response.data;
+		if (isEnabled) {
+			AlertService.showSuccess("Usuário habilitado com sucesso!");
+		} else {
+			AlertService.showError("Usuário desabilitado com sucesso!");
+		}
 	}
 	
 	self.updateFailureCallback = function() {
-		AlertService.showError("Usuário desabilitado com sucesso!");
+		
 	}
 	
 	self.removeSuccessCallback = function() {

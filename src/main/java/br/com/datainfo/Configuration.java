@@ -1,4 +1,4 @@
-package br.com.datainfo.users;
+package br.com.datainfo;
 
 public class Configuration {
 
