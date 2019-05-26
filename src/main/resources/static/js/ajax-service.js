@@ -49,14 +49,13 @@ app.factory("AjaxService", function($http) {
       );
     };
 
-    service.httpDelete = function(url, data, success, failure) {
+    service.httpDelete = function(url, success, failure) {
       $http({
         method: "DELETE",
-        url: urlBase + url,
-        data: data
+        url: urlBase + url
       }).then(
         function successCallback(response) {
-          if (success) success(response, index);
+          if (success) success(response);
         },
         function errorCallback(err) {
           if (failure) service.failure(failure, err);

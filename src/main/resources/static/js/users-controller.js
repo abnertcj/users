@@ -31,8 +31,8 @@ app.controller("UsersController", function($scope, $state, AjaxService, AlertSer
 		var response = confirm("Deseja realmente excluir o usuário " + name + "?");
 		if (response == true) {
 			angular.forEach(self.users, function(user){
-				if(user.id == id) {
-					AjaxService.httpDelete('/api/users', user, self.removeSuccessCallback, self.removeFailureCallback);
+				if(user.cpf == id) {
+					AjaxService.httpDelete('/api/users/' + id, self.removeSuccessCallback, self.removeFailureCallback);
 				}
 			});
 		}
@@ -63,7 +63,7 @@ app.controller("UsersController", function($scope, $state, AjaxService, AlertSer
 		
 	}
 	
-	self.removeSuccessCallback = function() {
+	self.removeSuccessCallback = function(response) {
 		self.init();
 		AlertService.showSuccess("Exclusão efetuada com sucesso.");
 	}

@@ -105,9 +105,9 @@ public class UserController {
 	 * DELETE
 	 */
 
-	@RequestMapping(value = "/users", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Long> deleteAll(@RequestBody UserPostDto dto) {
-		User user = this.repository.findByCpf(dto.getCpf());
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Long> deleteAll(@PathVariable("id") String cpf) {
+		User user = this.repository.findByCpf(cpf);
 		this.repository.delete(user);
 		return new ResponseEntity<Long>(HttpStatus.OK);
 	}
