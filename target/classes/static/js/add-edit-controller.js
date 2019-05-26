@@ -11,7 +11,7 @@ app.controller("AddEditController", function($scope, $stateParams, AjaxService, 
 			cpf: '',
 			phone: '',
 			code: 1,
-			profile: ''
+			profile: 0
 		};
 		
 		if (self.id != undefined) {

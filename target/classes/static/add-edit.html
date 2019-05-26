@@ -26,7 +26,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<label>CPF:</label>
-					<input type="text" id="cpf" name="cpf" class="form-control" ng-model="ctrl.user.cpf" required>
+					<input type="text" id="cpf" name="cpf" class="form-control" ng-model="ctrl.user.cpf" ui-br-cep-mask required>
 				</div>
 				<div class="col-md-2">
 					<label>Telefone:</label>
@@ -41,10 +41,11 @@
 				<div class="col-md-3">
 					<label>Perfil:</label>
 					<select id="profile" name="profile" class="form-control" ng-model="ctrl.user.profile" required>
-						<option value="0">Aluno</option>
-						<option value="1">Gestor Municipal</option>
-						<option value="2">Gestor Estadual</option>
-						<option value="3">Gestor Nacional</option>
+<!-- 						<option ng-repeat="prof in ctrl.profiles" ng-selected="ctrl.user.profile" value="{{prof.profile}}">{{prof.description}}</option> -->
+						<option value="0" ng-selected="ctrl.user.profile == 0">Aluno</option>
+						<option value="1" ng-selected="ctrl.user.profile == 1">Gestor Municipal</option>
+						<option value="2" ng-selected="ctrl.user.profile == 2">Gestor Estadual</option>
+						<option value="3" ng-selected="ctrl.user.profile == 3">Gestor Nacional</option>
 					</select>
 				</div>
 			</div>
