@@ -1,5 +1,5 @@
 'use strict';
-app.controller("AddEditController", function($scope, $stateParams, AjaxService, AlertService) {
+app.controller("AddEditController", function($scope, $state, $stateParams, AjaxService, AlertService) {
 	var self = this;
 	
 	self.id = $stateParams.id;
@@ -23,16 +23,16 @@ app.controller("AddEditController", function($scope, $stateParams, AjaxService, 
 	self.saveUser = function() {
 		var newUser = angular.copy(self.user);
 		if (self.id == undefined) {
-			AjaxService.httpPost('/api/users', newUser, self.saveSuccessCallback, self.saveFailureCallback);
+			var response = confirm("Deseja confirmar o salvamento?");
+			if (response == true) {
+				AjaxService.httpPost('/api/users', newUser, self.saveSuccessCallback, self.saveFailureCallback);
+			}
 		} else {
-			AjaxService.httpPut('/api/users', newUser, self.updateSuccessCallback, self.updateFailureCallback);
+			var response = confirm("Deseja confirmar a edição?");
+			if (response == true) {
+				AjaxService.httpPut('/api/users', newUser, self.updateSuccessCallback, self.updateFailureCallback);
+			}
 		}
-		
-		
-		filme.id = Date.now();
-		$scope.filmes.push(filme);
-
-		$scope.novoFilme = {};
 	}
 	
 	/*
@@ -52,6 +52,7 @@ app.controller("AddEditController", function($scope, $stateParams, AjaxService, 
 	}
 	
 	self.saveSuccessCallback = function() {
+		self.init();
 		AlertService.showSuccess("Cadastro efetuado com sucesso!");
 	}
 	
@@ -60,6 +61,8 @@ app.controller("AddEditController", function($scope, $stateParams, AjaxService, 
 	}
 	
 	self.updateSuccessCallback = function() {
+		self.id = undefined;
+		self.init();
 		AlertService.showSuccess("Alteração efetuada com sucesso!");
 	}
 	

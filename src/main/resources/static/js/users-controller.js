@@ -16,7 +16,7 @@ app.controller("UsersController", function($scope, $state, AjaxService, AlertSer
 	}
 	
 	self.editUser = function(id) {
-		$state.go('#add-edit/' + id);
+		$state.go('#edit/' + id);
 	}
 	
 	self.updateSituation = function(id) {
