@@ -83,8 +83,9 @@ public class UserController {
     	User savedUser = this.repository.findByCpf(dto.getCpf());
     	if (savedUser != null) {
 	        User user = this.converter.postToEntity(dto);
+	        user.setSituation(savedUser.getSituation().equals("A") ? "I" : "A");
 	    	User updatedUser = this.repository.saveAndFlush(user);
-	        return new ResponseEntity<Boolean>(dto.getSituation(), HttpStatus.OK);
+	        return new ResponseEntity<Boolean>(updatedUser.getSituation().equals("A") ? true : false, HttpStatus.OK);
     	} else {
     		return new ResponseEntity<Boolean>(HttpStatus.BAD_REQUEST);
     	}

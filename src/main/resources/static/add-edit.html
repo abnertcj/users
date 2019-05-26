@@ -1,4 +1,4 @@
-<div class="col-md-10" ng-controller="AddEditController as ctrl">
+<div class="col-md-12" ng-controller="AddEditController as ctrl">
 	<nav>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
@@ -6,7 +6,7 @@
 			</li>
 		</ol>
 	</nav>
-	<form role="form">
+	<form role="form" name="form" novalidate>
 		<div class="form-group">
 			<div class="row">
 				<div class="offset-1">
@@ -16,31 +16,31 @@
 			<div class="row">
 				<div class="col-md-6">
 					<label>Email:</label>
-					<input type="text" class="form-control" ng-model="ctrl.user.email">
+					<input type="text" class="form-control" ng-model="ctrl.user.email" required>
 				</div>
 				<div class="col-md-6">
 					<label>Nome:</label>
-					<input type="text" class="form-control" ng-model="ctrl.user.name">
+					<input type="text" class="form-control" ng-model="ctrl.user.name" required>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-2">
 					<label>CPF:</label>
-					<input type="text" class="form-control" ng-model="ctrl.user.cpf">
+					<input type="text" class="form-control" ng-model="ctrl.user.cpf" required>
 				</div>
 				<div class="col-md-2">
 					<label>Telefone:</label>
-					<input type="text" class="form-control" ng-model="ctrl.user.phone">
+					<input type="text" class="form-control" ng-model="ctrl.user.phone" required>
 				</div>
 				<div class="col-md-3">
 					<label>Função:</label>
-					<select name="select-profile" class="form-control" ng-model="ctrl.user.code">
-						<option ng-repeat="func in ctrl.functions" value="{{func.code}}">{{func.name}}</option>
+					<select name="select-profile" class="form-control" ng-model="ctrl.user.code" required>
+						<option ng-repeat="func in ctrl.functions" ng-selected="ctrl.user.code" value="{{func.code}}">{{func.name}}</option>
 					</select>
 				</div>
 				<div class="col-md-3">
 					<label>Perfil:</label>
-					<select name="select-profile" class="form-control" ng-model="ctrl.user.profile">
+					<select name="select-profile" class="form-control" ng-model="ctrl.user.profile" required>
 						<option value="0">Aluno</option>
 						<option value="1">Gestor Municipal</option>
 						<option value="2">Gestor Estadual</option>
