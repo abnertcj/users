@@ -56,7 +56,7 @@
 			<tr ng-repeat="user in ctrl.users">
 				<td>{{user.email}}</td>
 				<td>{{user.name}}</td>
-				<td>{{user.profile}}</td>
+				<td>{{user.profile == 0 ? "Aluno" : user.profile == 1 ? "Gestor Municipal" : user.profile == 2 ? "Gestor Estadual" : "Gestor Nacional"}}</td>
 				<td>
 					<label class="switch">
 					  <input type="checkbox" ng-checked="{{user.situation}}" ng-click="ctrl.updateSituation(user.cpf)">
