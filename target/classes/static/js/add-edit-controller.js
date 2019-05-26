@@ -56,8 +56,13 @@ app.controller("AddEditController", function($scope, $state, $stateParams, AjaxS
 		AlertService.showSuccess("Cadastro efetuado com sucesso!");
 	}
 	
-	self.saveFailureCallback = function() {
-		AlertService.showError("Falha");
+	self.saveFailureCallback = function(response) {
+		var value = response.data;
+		if (response.data == -1) {
+			AlertService.showError("Operação não realizada. Usuário já incluído.");
+		} else {
+			AlertService.showError("Operação não realizada. CPF digitado é inválido.");
+		}
 	}
 	
 	self.updateSuccessCallback = function() {
