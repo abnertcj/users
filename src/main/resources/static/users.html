@@ -1,0 +1,92 @@
+<div class="col-md-10" ng-controller="UsersController as ctrl">
+	<nav>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<span>Lista de Usuários</span>
+			</li>
+		</ol>
+	</nav>
+	<form role="form">
+		<div class="form-group">
+			<div class="row">
+			<div class="col-md-6">
+				<label>Nome:</label>
+				<input type="text" class="form-control" ng-model="ctrl.searchModel.name">
+			</div>
+			<div class="col-md-2">
+				<label>Situação</label>
+				<select name="select-situation" class="form-control" ng-model="ctrl.searchModel.situation">
+					<option value="A">A-Ativo</option>
+					<option value="I">I-Inativo</option>
+				</select>
+			</div>
+			
+			<div class="col-md-2">
+				<label>Perfil</label>
+				<select name="select-profile" class="form-control" ng-model="ctrl.searchModel.profile">
+					<option value="0">Aluno</option>
+					<option value="1">Gestor Municipal</option>
+					<option value="2">Gestor Estadual</option>
+					<option value="3">Gestor Nacional</option>
+				</select>
+			</div>
+			</div>
+		</div> 
+		<button ng-click="ctrl.search()" type="submit" class="btn btn-primary offset-9">
+			<i class="fa fa-search"></i> Pesquisar
+		</button>
+	</form> 
+	<a href="#/add" class="btn btn-success">
+		<i class="fa fa-plus-square"></i> Incluir
+	</a>
+	
+	<br /><br />
+
+	<table class="table">
+<!-- 		<thead> -->
+			<tr class="table-active">
+				<th>Email</th>
+				<th>Nome</th>
+				<th>Perfil</th>
+				<th>Habilitado</th>
+				<th>Ações</th>
+			</tr>
+<!-- 		</thead> -->
+<!-- 		<tbody> -->
+			<tr ng-repeat="user in ctrl.users">
+				<td>{{user.email}}</td>
+				<td>{{user.name}}</td>
+				<td>{{user.profile}}</td>
+				<td>
+					<label class="switch">
+					  <input type="checkbox" ng-checked="{{user.situation == 'A' ? true : false}}" ng-click="ctrl.updateSituation(user.cpf)">
+					  <span class="slider round"></span>
+					</label>
+				</td>
+				<td><a href="#edit/{{user.cpf}}" class="fa fa-pencil"></a> &nbsp; &nbsp;<button ng-click="ctrl.removeUser(user.cpf, user.name)" class="fa fa-trash"></button></td>
+			</tr>
+<!-- 		</tbody> -->
+	</table>
+	<nav>
+		<ul class="pagination">
+			<li class="page-item">
+				<a class="page-link" href="#"><<</a>
+			</li>
+			<li class="page-item">
+				<a class="page-link" href="#"><</a>
+			</li>
+			<li class="page-item">
+				<input type="text" class="form-control" style="width: 50px;" value=""></input>
+			</li>
+			<li class="page-item">
+				<span style="margin-top: 50px;"> de X</span>
+			</li>
+			<li class="page-item">
+				<a class="page-link" href="#">></a>
+			</li>
+			<li class="page-item">
+				<a class="page-link" href="#">>></a>
+			</li>
+		</ul>
+	</nav>
+</div>

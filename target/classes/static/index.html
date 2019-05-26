@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Datainfo - Usuários</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.7/angular-ui-router.min.js"></script>
+    <script src="js/users-module.js"></script>
+	<script src="js/routes.js"></script>
+	
+	<script src="js/ajax-service.js"></script>
+	<script src="js/alert-service.js"></script>
+	
+	<script src="js/users-controller.js"></script>
+	<script src="js/add-edit-controller.js"></script>
+	
+	
+
+  </head>
+  <body ng-app="usersApp">
+  	
+  	<div class="row">
+	   	<div class="col-md-12">
+	    	<nav class="navbar navbar-dark bg-primary">
+			  <strong>Datainfo</strong>
+			</nav>
+		</div>
+	</div>
+	<div class="row">
+	   	<div class="col-md-12">
+	   		<div id="message-box" class="alert alert-success alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<h4>Alert!</h4> <strong>Mensagem</strong>
+			</div>
+	   	</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+			<ul class="nav flex-column">
+				<li class="nav-item">
+					<a class="nav-link active" href="#"><i class="fa fa-home"></i> Principal</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#"><i class="fa fa-cog"></i> Parâmetros</a>
+				</li>
+				<li class="nav-item dropdown ml-md-auto">
+					<a class="nav-link" href="#users" id="navbarDropdownMenuLink">Usuários</a>
+					
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#"><i class="fa fa-question"></i> Sobre</a>
+				</li>
+				
+			</ul>
+		</div>
+		
+		<div ui-view></div>
+		
+	</div>
+    <!-- div ui-view="layout"></div-->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

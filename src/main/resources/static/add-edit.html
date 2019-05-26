@@ -1,0 +1,62 @@
+<div class="col-md-10" ng-controller="AddEditController as ctrl">
+	<nav>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<span>Incluir Usuário</span>
+			</li>
+		</ol>
+	</nav>
+	<form role="form">
+		<div class="form-group">
+			<div class="row">
+				<div class="offset-1">
+					<h7>* Campos Obrigatórios</h7>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<label>Email:</label>
+					<input type="text" class="form-control" ng-model="ctrl.user.email">
+				</div>
+				<div class="col-md-6">
+					<label>Nome:</label>
+					<input type="text" class="form-control" ng-model="ctrl.user.name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label>CPF:</label>
+					<input type="text" class="form-control" ng-model="ctrl.user.cpf">
+				</div>
+				<div class="col-md-2">
+					<label>Telefone:</label>
+					<input type="text" class="form-control" ng-model="ctrl.user.phone">
+				</div>
+				<div class="col-md-3">
+					<label>Função:</label>
+					<select name="select-profile" class="form-control" ng-model="ctrl.user.functionName">
+						<option value="0">Aluno</option>
+						<option value="1">Gestor Municipal</option>
+						<option value="2">Gestor Estadual</option>
+						<option value="3">Gestor Nacional</option>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<label>Perfil:</label>
+					<select name="select-profile" class="form-control" ng-model="ctrl.user.profile">
+						<option value="0">Aluno</option>
+						<option value="1">Gestor Municipal</option>
+						<option value="2">Gestor Estadual</option>
+						<option value="3">Gestor Nacional</option>
+					</select>
+				</div>
+			</div>
+		</div> 
+		<a href="#users" class="btn btn-primary offset-7">
+			<i class="fa fa-arrow-left"></i> Voltar
+		</a>
+		<button ng-click="ctrl.saveUser()" type="button" class="btn btn-success">
+			<i class="fa fa-save"></i> Salvar
+		</button>
+	</form>
+</div>
