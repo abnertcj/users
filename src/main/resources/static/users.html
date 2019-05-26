@@ -16,8 +16,8 @@
 			<div class="col-md-2">
 				<label>Situação</label>
 				<select name="select-situation" class="form-control" ng-model="ctrl.searchModel.situation">
-					<option value="A">A-Ativo</option>
-					<option value="I">I-Inativo</option>
+					<option value="true">A-Ativo</option>
+					<option value="false">I-Inativo</option>
 				</select>
 			</div>
 			
@@ -32,9 +32,9 @@
 			</div>
 			</div>
 		</div> 
-		<button ng-click="ctrl.search()" type="submit" class="btn btn-primary offset-9">
-			<i class="fa fa-search"></i> Pesquisar
-		</button>
+<!-- 		<button ng-click="ctrl.search()" type="submit" class="btn btn-primary offset-9"> -->
+<!-- 			<i class="fa fa-search"></i> Pesquisar -->
+<!-- 		</button> -->
 	</form> 
 	<a href="#/add" class="btn btn-success">
 		<i class="fa fa-plus-square"></i> Incluir
@@ -53,7 +53,7 @@
 			</tr>
 <!-- 		</thead> -->
 <!-- 		<tbody> -->
-			<tr ng-repeat="user in ctrl.users">
+			<tr ng-repeat="user in ctrl.users | filter: {name:ctrl.searchModel.name, situation:ctrl.searchModel.situation, profile:ctrl.searchModel.profile}">
 				<td>{{user.email}}</td>
 				<td>{{user.name}}</td>
 				<td>{{user.profile == 0 ? "Aluno" : user.profile == 1 ? "Gestor Municipal" : user.profile == 2 ? "Gestor Estadual" : "Gestor Nacional"}}</td>
