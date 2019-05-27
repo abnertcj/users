@@ -43,7 +43,7 @@
 	<br /><br />
 
 	<table class="table">
-<!-- 		<thead> -->
+		<thead>
 			<tr class="table-active">
 				<th>Email</th>
 				<th>Nome</th>
@@ -51,8 +51,8 @@
 				<th>Habilitado</th>
 				<th>Ações</th>
 			</tr>
-<!-- 		</thead> -->
-<!-- 		<tbody> -->
+		</thead>
+		<tbody>
 			<tr ng-repeat="user in ctrl.users | filter: {name:ctrl.searchModel.name, situation:ctrl.searchModel.situation, profile:ctrl.searchModel.profile}">
 				<td>{{user.email}}</td>
 				<td>{{user.name}}</td>
@@ -65,28 +65,28 @@
 				</td>
 				<td><a href="#edit/{{user.cpf}}" class="fa fa-pencil"></a> &nbsp; &nbsp;<button ng-click="ctrl.removeUser(user.cpf, user.name)" class="fa fa-trash"></button></td>
 			</tr>
-<!-- 		</tbody> -->
+		</tbody>
 	</table>
-	<nav>
-		<ul class="pagination">
-			<li class="page-item">
-				<a class="page-link" href="#"><<</a>
-			</li>
-			<li class="page-item">
-				<a class="page-link" href="#"><</a>
-			</li>
-			<li class="page-item">
-				<input type="text" class="form-control" style="width: 50px;" value=""></input>
-			</li>
-			<li class="page-item">
-				<span style="margin-top: 50px;"> de X</span>
-			</li>
-			<li class="page-item">
-				<a class="page-link" href="#">></a>
-			</li>
-			<li class="page-item">
-				<a class="page-link" href="#">>></a>
-			</li>
-		</ul>
-	</nav>
+<!-- 	<nav> -->
+<!-- 		<ul class="pagination"> -->
+<!-- 			<li class="page-item"> -->
+<!-- 				<a class="page-link" href="#"><<</a> -->
+<!-- 			</li> -->
+<!-- 			<li class="page-item"> -->
+<!-- 				<a class="page-link" href="#"><</a> -->
+<!-- 			</li> -->
+<!-- 			<li class="page-item"> -->
+<!-- 				<input type="text" class="form-control" style="width: 50px;" value=""></input> -->
+<!-- 			</li> -->
+<!-- 			<li class="page-item"> -->
+<!-- 				<span style="margin-top: 50px;"> de X</span> -->
+<!-- 			</li> -->
+<!-- 			<li class="page-item"> -->
+<!-- 				<a class="page-link" href="#">></a> -->
+<!-- 			</li> -->
+<!-- 			<li class="page-item"> -->
+<!-- 				<a class="page-link" href="#">>></a> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+<!-- 	</nav> -->
 </div>

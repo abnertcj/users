@@ -1,1 +1,1 @@
-var app = angular.module("usersApp", ['ui.router']);
+var app = angular.module("usersApp", ['ui.router', 'ngMask']);

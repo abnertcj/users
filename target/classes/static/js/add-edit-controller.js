@@ -23,6 +23,7 @@ app.controller("AddEditController", function($scope, $state, $stateParams, AjaxS
 	self.saveUser = function() {
 		var newUser = angular.copy(self.user);
 		newUser.cpf = newUser.cpf.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+		newUser.phone = newUser.phone.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
 		if (self.id == undefined) {
 			var response = confirm("Deseja confirmar o salvamento?");
 			if (response == true) {
